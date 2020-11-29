@@ -1,25 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import  Header  from './Components/Header/Header';
+import Grid  from './Components/Grid';
+import { useState } from 'react';
+import moment from 'moment';
+import { useStyles } from './Components/Header/StylesUtils';
 
-function App() {
+function CalenderView() {
+  const styles = useStyles();
+  let date;
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentMonth, setCurrentMonth ] = useState(currentDate.toLocaleString('en-us', {month: "long", year: "numeric"}));
+  const [nameOfTheDay, setNameOfTheDay ] = useState("Today");
+
+  function onClickLeft () {
+    const month = currentDate.getMonth();
+    currentDate.setDate(1);
+    currentDate.setMonth(month -1);
+      date = moment(currentDate);
+      console.log(moment().diff(date, 'days'));
+    if (Math.abs(moment().diff(date, 'days')) >= 1) {
+      setNameOfTheDay(date.fromNow()); // '2 days ago' etc.
+    } else {
+      setNameOfTheDay(date.calendar().split(' ')[0]);
+    }
+    setCurrentDate(currentDate);
+    setCurrentMonth(currentDate.toLocaleString('en-us', {month: "long", year: "numeric"}));
+  }
+
+  function onClickRight () {
+    const month = currentDate.getMonth();
+    currentDate.setDate(1);
+    currentDate.setMonth(month + 1);
+    date = moment(currentDate);
+
+    if (Math.abs(moment().diff(date, 'days')) >= 1) {
+      setNameOfTheDay(date.fromNow()); // ' in 2 days' etc.
+    } else {
+      setNameOfTheDay(date.calendar().split(' ')[0]);
+    }
+    setCurrentDate(currentDate);
+    setCurrentMonth(currentDate.toLocaleString('en-us', {month: "long", year: "numeric"}));
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.calendar}>
+      <Header  currentMonth={currentMonth} onClickLeft={onClickLeft} onClickRight={onClickRight} nameOfTheDay={nameOfTheDay}/>
+      <Grid currentDate={currentDate} setCurrentDate={setCurrentDate} className={styles.grid}/>
     </div>
   );
 }
 
-export default App;
+export default CalenderView;
