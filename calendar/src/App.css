@@ -7,7 +7,8 @@
 
 .BG {
   width: 1260px;
-  height: 30px;
+  height: 38px;
+  display: flex;
   margin: 0 0 24px;
   padding: 0 1044px 0 0;
   background-color: rgba(255, 255, 255, 0.06);

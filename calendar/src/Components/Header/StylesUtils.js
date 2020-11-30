@@ -22,9 +22,11 @@ export const useStyles = makeStyles({
     border: "hidden"
  },
  slider: {
+    position: "absolute",
     width: "3px",
     height: "74px",
-    margin: "-20px 12px 0 0",
+    margin: "-30px 12px 0 0",
+    marginLeft: "8px",
     backgroundColor: "#0f6ebe",
     position:"absolute"
  },
@@ -54,26 +56,32 @@ days:{
 greyCell:{
     width: "182px",
     height:"100px",
+    padding: "0 24px 0 16px",
     maxHeight: "100px",
     opacity: 0.4,
     backgroundColor: "rgba(255, 255, 255, 0.06)",
-    border: "hidden"
+    border: "hidden",
+    color: "#e6e6e6",
 },
 blackCell:{
     width: "182px",
     height:"100px",
+    padding: "0 24px 0 16px",
     maxHeight: "100px",
     opacity: 0.8,
     backgroundColor: "rgba(255, 255, 255, 0.06)",
-    border: "hidden"
+    border: "hidden",
+    color: "#e6e6e6",
 },
 dateText:{
     width: "25px",
+    position: "absolute",
     height: "28px",
     margin: "0 2px 0 0",
     fontFamily: "Poppins",
     fontSize: "24px",
     fontWeight: "bold",
+    // float: "left",
     lineHeight: 1.17,
     color: "#e6e6e6",
     marginLeft: "27px",
@@ -84,14 +92,27 @@ calendarIcon: {
     margin: "2px 4px 0 0",
 },
 monthString:{
-    display: "contents",
     width: "45px",
     height: "18px",
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
+    marginLeft: "54px",
+    marginTop: "8px",
     fontFamily: "Poppins",
     fontSize: "14px",
     lineHeight: 1.29,
     color: "rgba(255, 255, 255, 0.9)"
+},
+nameOfTheDay: {
+    height: "15px",
+    padding: "12px 20px",
+    borderBottomLeftRadius: "100px",
+    borderTopLeftRadius: "100px",
+    backgroundColor: "#0f6ebe",
+    color: "#e6e6e6"
+
+},
+nameOfTheDayTextIcon: {
+    top: "-10px",
+    color: "#e6e6e6"
 }
 })
 

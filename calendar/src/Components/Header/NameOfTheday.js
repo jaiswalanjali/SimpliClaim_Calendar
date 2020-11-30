@@ -7,9 +7,11 @@ import { EventAvailable } from '@material-ui/icons';
 export default function NameOfTheDay(props) {
     const styles = useStyles();
         return (
-            <Button startIcon={<EventAvailable className={styles.calendarIcon}/>}  color="primary">
-             {props.nameOfTheDay}
+            <div className={styles.nameOfTheDay}>
+            <Button startIcon={<EventAvailable className={styles.calendarIcon}/>}  className={styles.nameOfTheDayTextIcon} style={{ color: "#e6e6e6",     textTransform: "capitalize"}}>
+            {props.nameOfTheDay}
           </Button>
+          </div>
         )
 
 }

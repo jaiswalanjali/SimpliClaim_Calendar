@@ -11,13 +11,14 @@ function TableCellWithSlider(props) {
    const row = props.row;
    const date = props.date;
    const fulldateString = props.fulldateString;
-   console.log(fulldateString.split(' ')[1].split(','));
    const monthString =  (fulldateString.split(' ')[2]==="01"?fulldateString.split(' ')[1].split(',')[0]: '');
    const show = props.show;
- return (<TableCell  key={date} onClick={props.onClick} size="small" className={props.className}>
-   { show && <span className={styles.slider}/>}
+ return (<TableCell  key={date} onClick={props.onClick}  size="small"  className={props.className} style={{border: "hidden", padding:0}} >
+  { show && <span className={styles.slider}/>}
+
 <div className={styles.dateText} key={date}>{fulldateString.split(' ')[2]}</div>
 {monthString && <div className={styles.monthString}>{monthString}</div>}
+
  </TableCell>);
  
 }
@@ -44,7 +45,6 @@ export default function Grid (props) {
       }
 
       React.useEffect (() => {
-         console.log(props.currentDate)
          setShowSliderRow(0);
          setShowSliderCol(0);
          setNewDate(props.currentDate);
@@ -53,7 +53,7 @@ export default function Grid (props) {
       
 
         return (
-        <Table > 
+        <Table style={{ height: "auto", tableLayout: "auto" }}> 
             <TableBody>
                <Columns />
                {
